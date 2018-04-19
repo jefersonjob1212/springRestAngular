@@ -15,7 +15,69 @@ import { Observable } from 'rxjs/Observable';
     styleUrls: ['./cadastro.component.css']
 })
 
-export class CadastroComponent
+export class CadastroComponent implements OnInit
 {
+    private titulo: string;
+    private pessoa: Pessoa = new Pessoa();
+    private cadPessoa: string = 'Cadastro de Pessoa';
 
+    constructor(private pessoaService: PessoaService,
+                private router: Router,
+                private activatedRoute: ActivatedRoute)
+    {}
+
+    ngOnInit(){
+        this.activatedRoute.params.subscribe(parametro=>{
+            if(parametro['codigo'] == undefined)
+            {
+                this.titulo = 'Novo ' + this.cadPessoa;
+            }
+            else
+            {
+                this.titulo = 'Editar ' + this.cadPessoa;
+            }
+        });
+    }
+
+    salvar(): void{
+        if(this.pessoa.codigo == undefined)
+        {
+            this.pessoaService.addPessoa(this.pessoa).subscribe(response=>{
+                let res:Response = <Response>response;
+
+                if(res.codigo == 1)
+                {
+                    alert(res.mensagem);
+                    this.pessoa = new Pessoa();
+                }
+                else
+                {
+                    alert(res.mensagem);
+                }
+            },
+            (erro)=>{
+                alert(erro);
+            });
+        }
+        else
+        {
+            this.pessoaService.atualizarPessoa(this.pessoa).subscribe(response=>{
+                let res:Response = <Response>response;
+
+                if(res.codigo == 1)
+                {
+                    alert(res.mensagem);
+                    this.router.navigate(['./consulta-pessoa']);
+                }
+                else
+                {
+                    alert(res.mensagem);
+                }
+            },
+            (erro)=>{
+                alert(erro);
+            }
+        );
+        }
+    }
 }
