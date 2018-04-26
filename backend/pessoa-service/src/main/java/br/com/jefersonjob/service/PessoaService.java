@@ -48,7 +48,10 @@ public class PessoaService {
 		}
 	}
 	
-	@RequestMapping(value="/pessoa", method=RequestMethod.GET, consumes=MediaType.APPLICATION_JSON_UTF8_VALUE)
+	//Produces: produz para mandar para a view
+	//Consumes: consome algo que está no ResponseBody
+	//Quando vem pelo PathVariable ou sem parâmetro, não tem consumes.
+	@RequestMapping(value="/pessoa", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_UTF8_VALUE)
 	public @ResponseBody List<PessoaModel> consultar()
 	{
 		return this.pessoaRepository.findAll();

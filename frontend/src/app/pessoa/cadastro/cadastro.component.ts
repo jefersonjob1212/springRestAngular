@@ -35,6 +35,7 @@ export class CadastroComponent implements OnInit
             else
             {
                 this.titulo = 'Editar ' + this.cadPessoa;
+                this.pessoaService.getPessoa(Number(parametro['codigo'])).subscribe(res => this.pessoa=res);
             }
         });
     }
