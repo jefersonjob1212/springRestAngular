@@ -1,4 +1,4 @@
-package br.com.jefersonjob.bo;
+package br.com.jefersonjob.bo.iface;
 
 import java.util.List;
 

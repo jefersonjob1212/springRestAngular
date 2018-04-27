@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.jefersonjob.bo.IPessoaBO;
+import br.com.jefersonjob.bo.iface.IPessoaBO;
 import br.com.jefersonjob.model.PessoaModel;
 import br.com.jefersonjob.model.ResponseModel;
 

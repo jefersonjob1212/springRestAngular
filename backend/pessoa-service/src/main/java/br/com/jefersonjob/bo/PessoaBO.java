@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.com.jefersonjob.bo.iface.IPessoaBO;
 import br.com.jefersonjob.model.PessoaModel;
 import br.com.jefersonjob.model.ResponseModel;
 import br.com.jefersonjob.repository.PessoaRepository;
