@@ -13,6 +13,7 @@ import { routing } from './../app.routes';
 
 import { ConfigService } from '../app/services/config.service';
 import { PessoaService } from '../app/services/pessoa.service'
+import { AppBootstrapModule } from './bootstrap.module';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { PessoaService } from '../app/services/pessoa.service'
     BrowserModule,
     HttpModule,
     FormsModule,
+    AppBootstrapModule,
     routing
   ],
   providers: [ConfigService, PessoaService],
