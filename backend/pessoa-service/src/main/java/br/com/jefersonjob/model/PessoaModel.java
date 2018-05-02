@@ -24,6 +24,11 @@ public class PessoaModel {
 	
 	@Column(name="fl_ativo", columnDefinition="BIT")
 	private boolean ativo;
+	
+	public PessoaModel() {
+		// TODO Auto-generated constructor stub
+		this.ativo = false;
+	}
 
 	public Integer getCodigo() {
 		return codigo;

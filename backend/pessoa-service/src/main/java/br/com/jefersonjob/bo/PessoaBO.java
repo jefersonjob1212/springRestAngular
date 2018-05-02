@@ -3,29 +3,33 @@ package br.com.jefersonjob.bo;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.com.jefersonjob.bo.iface.IPessoaBO;
 import br.com.jefersonjob.model.PessoaModel;
 import br.com.jefersonjob.model.ResponseModel;
 import br.com.jefersonjob.repository.PessoaRepository;
 
-
+@Service
 public class PessoaBO implements IPessoaBO {
-	
+
 	@Autowired
 	private PessoaRepository repository;
-	
+
 	private ResponseModel response;
 
 	@Override
 	public ResponseModel salvar(PessoaModel pessoa) {
-		
+
 		try {
 			if(pessoa.getNome() == null || pessoa.getNome().equals(""))
 				this.response = new ResponseModel(0, "Campo nome é obrigatório.");
-				
-			this.repository.save(pessoa);
-			this.response = new ResponseModel(1, "Registro Salvo com sucesso");
+
+			else
+			{
+				this.repository.save(pessoa);
+				this.response = new ResponseModel(1, "Registro Salvo com sucesso");
+			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			//e.printStackTrace();
