@@ -11,8 +11,7 @@ import { Observable } from 'rxjs/Observable';
 
 @Component({
     selector: 'app-cadastro-pessoa',
-    templateUrl: './cadastro.component.html',
-    styleUrls: ['./cadastro.component.css']
+    templateUrl: './cadastro.component.html'
 })
 
 export class CadastroComponent implements OnInit
