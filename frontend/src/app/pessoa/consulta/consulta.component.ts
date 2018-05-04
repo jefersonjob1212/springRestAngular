@@ -6,8 +6,7 @@ import { Response } from '../../services/response';
 
 @Component({
     selector: 'app-consulta-pessoa',
-    templateUrl: './consulta.component.html',
-    styleUrls: ['./consulta.component.css']
+    templateUrl: './consulta.component.html'
 })
 export class ConsultaComponent implements OnInit
 {

@@ -38,6 +38,17 @@ export class CadastroComponent implements OnInit
             }
         });
     }
+    
+    voltar(): void
+    {
+        if(this.pessoa.codigo == undefined)
+        {
+            this.router.navigate(['./home']);
+        }
+        else{
+            this.router.navigate(['./consulta-pessoa']);
+        }
+    }
 
     salvar(): void{
         if(this.pessoa.codigo == undefined)
