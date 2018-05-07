@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
@@ -19,10 +20,13 @@ export class CadastroComponent implements OnInit
     private titulo: string;
     private pessoa: Pessoa = new Pessoa();
     private cadPessoa: string = 'Cadastro de Pessoa';
+    private res:Response = new Response();
+    public modalRef:BsModalRef = new BsModalRef();
 
     constructor(private pessoaService: PessoaService,
                 private router: Router,
-                private activatedRoute: ActivatedRoute)
+                private activatedRoute: ActivatedRoute,
+                private modalService:BsModalService)
     {}
 
     ngOnInit(){
@@ -50,20 +54,15 @@ export class CadastroComponent implements OnInit
         }
     }
 
-    salvar(): void{
+    salvar(template: TemplateRef<any>): void{
         if(this.pessoa.codigo == undefined)
         {
             this.pessoaService.addPessoa(this.pessoa).subscribe(response=>{
-                let res:Response = <Response>response;
-
-                if(res.codigo == 1)
+                this.res = <Response>response;
+                this.modalRef = this.modalService.show(template);
+                if(this.res.codigo == 1)
                 {
-                    alert(res.mensagem);
                     this.pessoa = new Pessoa();
-                }
-                else
-                {
-                    alert(res.mensagem);
                 }
             },
             (erro)=>{
@@ -73,16 +72,11 @@ export class CadastroComponent implements OnInit
         else
         {
             this.pessoaService.atualizarPessoa(this.pessoa).subscribe(response=>{
-                let res:Response = <Response>response;
-
-                if(res.codigo == 1)
+                this.res = <Response>response;
+                this.modalRef = this.modalService.show(template);
+                if(this.res.codigo == 1)
                 {
-                    alert(res.mensagem);
                     this.router.navigate(['./consulta-pessoa']);
-                }
-                else
-                {
-                    alert(res.mensagem);
                 }
             },
             (erro)=>{

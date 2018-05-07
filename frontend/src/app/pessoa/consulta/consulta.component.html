@@ -20,7 +20,7 @@
                     <span class="glyphicon glyphicon-edit"></span>
                     Editar
                 </a>
-                <a class="btn btn-danger" (click)="excluir(pessoa.codigo, i);">
+                <a class="btn btn-danger" (click)="openModal(pessoa.codigo, i, template);">
                     <span class="glyphicon glyphicon-trash"></span>
                     Excluir
                 </a>
@@ -31,3 +31,45 @@
         </tr>
     </tbody>
 </table>
+
+<ng-template #template>
+    <div class="modal-header">
+        <h3 class="modal-title pull-left">Excluir Usuário</h3>
+        <button type="button" class="close pull-right" aria-label="Close" (click) = "modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        Deseja realmente excluir este registro?
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-primary" (click)="excluir(message)">
+            <span class="glyphicon glyphicon-ok"></span>SIM
+        </button>
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+            <span class="glyphicon glyphicon-remove"></span>NÃO
+        </button>
+    </div>
+</ng-template>
+
+<ng-template #message>
+    <div class="modal-header">
+        <h3 class="modal-title pull-left">Mensagem</h3>
+        <button type="button" class="close pull-right" aria-label="Close" (click) = "modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <div *ngIf="res.codigo == 1" class="alert alert-success">
+            {{res.mensagem}}
+        </div>
+        <div *ngIf="res.codigo != 1" class="alert alert-danger">
+            {{res.mensagem}}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" (click)="modalRef.hide()">
+            <span class="glyphicon glyphicon-remove"></span>SAIR
+        </button>
+    </div>
+</ng-template>
