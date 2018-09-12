@@ -1,10 +1,10 @@
 # springRestAngular
-Projeto realizado em tutorial no portal http://www.ciceroednilson.com.br
+This project was carried out in a tutorial on the site http://www.ciceroednilson.com.br
 
-# Objetivo
+# Objective
 
-Estudar AngularJS 4.x para aperfeiçoamento do meu desenvolvimento, junto com a API REST desenvolvida juntamente com Spring Boot.
+To study AngularJS Framework 4.x version for improvement of my development, together with the API REST developed with Spring Boot.
 
-# Como se divide o projeto?
+# How this project was organized?
 
-Ele se divide em frontend e backend. O backend é feito em Java com o framework Spring Boot e o frontend com html e AngularJS versão 4.x
+This project is divided into frontend and backend. The backend is developed in Java with Spring Boot and the frontend with HTML5 and AngularJS 4.x
